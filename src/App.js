@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <h2>App组件</h2>
-      <ComA />
+      <ComA sid="2" cid="3"/>
       <ComB />
     </div>
   );

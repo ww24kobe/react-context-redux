@@ -9,6 +9,7 @@ import MyContext from "../Mycontext.js"
 class ComB extends Component {
     constructor(props) {
         super(props);
+        this.state = {};
     }
     static contextType = MyContext;
 

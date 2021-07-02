@@ -1,13 +1,12 @@
 
 // 定义仓库中的初始化state
 const initState = {
-    count: 0,
-    price: 9.9
+    count: 0
 }
 
 // reducer: 对state数据进行操作
 exports.reducer = (state = initState,action ) => {
-    console.log('reducer被触发',action)
+    console.log('reducer被触发=>action',action)
     switch(action.type){
         case 'increment': // action名字
             return {
