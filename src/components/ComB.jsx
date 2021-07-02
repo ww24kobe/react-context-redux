@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import ComC from "./ComC.jsx"
 
 // const MyContext = React.createContext('gray');
-import MyContext from "../Mycontext.js"
+import MyThemeContext from "../MyThemeContext.js"
 
 
 class ComB extends Component {
@@ -11,19 +11,19 @@ class ComB extends Component {
         super(props);
         this.state = {};
     }
-    static contextType = MyContext;
+    static contextType = MyThemeContext;
 
     render() {
         return (
-            <div style={{ width: '800px', border: '2px solid pink' }} >
+            <div style={{ width: '800px', border: '2px solid green' }} >
                 <h2>B组件</h2>
                 <div>
-                    count: {this.props.count}, <br/>
+                    count: {this.props.count} <br/>
                     context: {this.context}
                 </div>
-                <MyContext.Provider value="dark">
+                <MyThemeContext.Provider value="dark">
                     <ComC />
-                </MyContext.Provider>
+                </MyThemeContext.Provider>
             </div>
         )
     }
@@ -31,10 +31,10 @@ class ComB extends Component {
 
 // 实现第一个参数mapStoreStateToProps ,
 // 通过connect加强之后，在组件中可以 通过  this.props.属性名  去获取属性
-const mapStoreStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return state;
 }
 
 
 
-export default connect(mapStoreStateToProps)(ComB);
+export default connect(mapStateToProps)(ComB);

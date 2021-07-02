@@ -10,7 +10,7 @@ export default class ComC extends Component {
 
     render() {
         return (
-            <div style={{width: '600px',border: '2px solid skyblue' }} >
+            <div style={{width: '600px',border: '2px solid blue' }} >
                 <h2>C组件</h2>
                 <ComD />
             </div>

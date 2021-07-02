@@ -6,7 +6,6 @@ const initState = {
 
 // reducer: 对state数据进行操作
 exports.reducer = (state = initState,action ) => {
-    console.log('reducer被触发=>action',action)
     switch(action.type){
         case 'increment': // action名字
             return {
@@ -19,6 +18,6 @@ exports.reducer = (state = initState,action ) => {
                 count: state.count - 1
             }
         default:
-            return state;
     }
+    return state;
 }
