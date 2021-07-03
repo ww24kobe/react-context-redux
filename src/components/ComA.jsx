@@ -36,7 +36,12 @@ class ComA extends Component{
         })
     }
 
+    handlePrice(){
+        this.props.cPrice(99.99)
+    }
+
     render(){
+        console.log(this.props)
         return (
             <div style={{width: '800px',border: '2px solid red'}}>
                 <h2>A组件</h2>
@@ -51,7 +56,8 @@ class ComA extends Component{
 
                  <button onClick={ ()=>this.asyncDecrement() }> async increment </button>
                 <div>
-                    count： {this.props.count}
+                    count： {this.props.count} <br/>
+                    price {this.props.price} <br/> <button onClick={()=>{ this.handlePrice() }}>changePrice</button>
                 </div>
                 
             </div>
@@ -60,8 +66,8 @@ class ComA extends Component{
 }
 // connect有两个参数，类型都是函数
 // 参数1：mapStoreStateToProps,用来获取仓库中的数据,在组件中通过 this.props.属性名 就可以获取属性
-const mapStateToProps = (state,props) => {
-    return state;
+const mapStateToProps = (initstate,props) => {
+    return initstate;
 }
 // 参数2：mapReducerToProps,用来修改仓库中的数据，在组件中就可以通过 this.props.reducer方法名 来触发相应的action
 const mapDispatchToProps = (dispatch,props) => {
@@ -78,10 +84,20 @@ const mapDispatchToProps = (dispatch,props) => {
         asyncIncr: ()=>{
             setTimeout(() => {
                 // 异步操作 axios.get()...
-                dispatch({type:"increment",payload:{goods_number:10}})
+                dispatch({type:"increment",payload:{goods_number:5}})
             }, 2000);
             
+        },
+        cPrice: (newPrice)=>{
+            // dispatch 分发action
+            console.log('dispatch 分发action')
+            dispatch({type:"changePrice",newPrice})
         }
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(ComA)
+
+// 组件修改redux状态数据流程： 
+// 1。先把组件通过connect进行几个强化处理 
+// 2. 通过this.props.属性名，获取状态的数据
+// 3. 通过this.props.方法名， this.props.cPrice(99.99)
